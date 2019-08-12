@@ -74,9 +74,9 @@ Whenever such an interval valuation is asserted, all possible cases are handled 
 \paragraph{}
 \todo{Das stimmt doch, oder?}
 As shown in section~\ref{ssec:prop1}, if a CSP $\mathcal{P}$ is satisfiable, each $\rho$ under which none of the constraints $c \in C$ are false contains a solution.
-Together with the fact that the algorithm traverses the branches of search tree which can contain a solution shows that the algorithm will find the solution if one is present.
-And if there're no branches left to explore, stop the search by saying that $\mathcal{P}$ is unsatisfiable.
+The fact that the algorithm ignores parts of the search space which are known to not contain a solution, but keeps searching in parts that still could, it will get to a result any time.
 
+\todo[inline]{Completeness and soundness noch mal extra herausstellen, also welche Teil jetzt fuer was sorgt}
 
 
 %Der Algorithmus durchsucht alle Äste des Suchbaums die eine Lösung enthalten können, bis eine Lösung gefunden wurde.
