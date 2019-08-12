@@ -58,6 +58,10 @@
 }
 
 
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+
 %Beginn des eigentlichen Dokumentes:
 %----------------------------------------------
 \begin{document}
@@ -75,6 +79,9 @@
 \input{sections/signatures}
 \newpage
 \input{sections/introduction}
+
+\section{Solutions to the exercises}
+\todo{Ich bin mit der Benennung des Abschnits nicht zufrieden}
 \input{sections/task-a}
 \input{sections/task-b}
 \input{sections/task-c}

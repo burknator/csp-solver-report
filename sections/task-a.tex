@@ -1,11 +1,8 @@
-\section{Solutions to the exercises}
-\todo{Ich bin mit der Benennung des Abschnits nicht zufrieden}
+\subsection{Why does proposition 1 hold?}\label{ssec:prop1}
 
 \begin{enumerate}[(a)]
 \item Why does proposition 1 hold? How can a solution be extracted from $\rho$? Give a comprehensible explanation. (A formal proof is not necessary.)
 \end{enumerate}
-
-
 Let's recall proposition 1 from~\cite{MF19}:
 
 \paragraph{Proposition 1}
@@ -20,7 +17,8 @@ An interval valuation is a mapping from a variable $x_i \in X$ to a non-empty in
 Per definition 1, a solution $A$ to a CSP $\mathcal{P}$ is an n-tuple $A = \langle a_1, ..., a_n \rangle$ with (1) $a_i \in D_i$, s.t. (2) all constraints $c \in C$ are satisfied.~\cite{MF19}
 
 Let $\rho$ be an interval valuation of a CSP $\mathcal{P}$, which satisfies all constraints $c \in C$.
-Using the above definition of solutions of a CSP and interval valuations, we can see that $\forall a_i \in A: a_i \in \rho(x_i) \subseteq D_i$, hence we can pick a single value $a_i$ from each $\rho(x_i)$ to create a solution $A$.
+Using the above definition of solutions of a CSP and interval valuations, we can see that $\forall a_i \in A: a_i \in \rho(x_i) \subseteq D_i$, hence we can pick a single value $a_i$ from each $\rho(x_i)$ to extract a solution $A$.
+\todo{Nur wenn mit dem $\rho$ kein $c$ false ist}
 We know $A$ is then a solution, because both properties of a solution hold:
 
 \begin{enumerate}[(1)]

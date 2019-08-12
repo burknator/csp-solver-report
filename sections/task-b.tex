@@ -1,0 +1,154 @@
+\subsection{Soundness and Completeness of $\mathcal{A}$}
+\begin{enumerate}[(b)]
+\item Is algorithm $\mathcal{A}$ sound and complete, i.e. does $\mathcal{A}$ stop on each simple CSP with the correct result? Give reasons for your answer.
+\end{enumerate}
+
+Algorithm $\mathcal{P}$ is both sound and complete, because it traverses the search space in a complete manner and only returns correct results.
+To explain this, we will use a tree-like structure as the search space and argue that the algorithm traverses this tree in a way that allows it to always stop with the correct result.
+
+\paragraph{}
+\todo{Draw search space}
+Fig.~\ref{?} shows the search space as a tree.
+Each node represents an interval valuation, with the root being the initial interval valuation and the children of each node being created as result of step 3 of the algorithm.
+The algorithm dictates that $\rho_{i} \cup \rho_{ii} = \rho$ and $\rho_{i} \cap \rho_{ii} = \emptyset$.
+Which is important, because otherwise parts of the variable intervals would be missing from, or occur more than once in the search space.
+
+%In the tree, all solutions are in the leaves.
+%The search space, and hence the tree, is big for a CSP with sufficiently many constraints, thus it's not feasible to build the whole tree to get to all solutions.
+%\todo{Glaube ich jedenfalls, muss noch mal geprüft werden...}
+%Thus, a depth-first search is done in this tree.
+%If an interval valuation under which all constraints are true is found, the algorithm stops immediately with \emph{CSP $\mathcal{P}$ is satisfiable}.
+
+\begin{lemma}\label{lemma:false-branches}
+    %\todo{Either proof this or use something different than a lemma}
+    Once an interval valuation $\rho$ is found which falsifies a single constraint, the entire branch rooting in that interval valuation can be ignored by the search for a result.
+    It is impossible for the truth value to change by further exploring this branch, because the condition $max \rho(x) < min \rho(y) + k$ for each false simple bound stays false. 
+\end{lemma}
+
+
+\paragraph{Proof}
+
+Let $\rho$ be in interval valuation under which at least one constraint is false, and have false simple bounds have the form $x \geq y + k$.
+
+Were the algorithm $\mathcal{A}$ to execute the decision step when a constraint is false under the current interval valuation, only the following cases could occur:
+
+Let $x \in X$ be a variable that is part of at least one of the false simple bounds.
+Let $\rho'(x)$ and $\rho''(x)$ be interval valuations created from $\rho(x)$ according to step 3 of algorithm $\mathcal{A}$.
+We know that $\max \rho'(x), \max \rho''(x) \leq \max \rho(x)$ holds, because the algorithm dictates that $\rho'(x) \cup \rho''(x) = \rho(x)$.
+Thus, $\max \rho(x) < \min \rho(y) + k$ still holds for all simple bounds that $x$ is part of, which means their truth value stays unchanged.
+
+Let $y \in X$, $\rho(y)$, $\rho'(y)$ and $\rho''(y)$ be a created analogous to before.
+We know that $\min \rho'(y), \min \rho''(y) \geq \min \rho(y)$ holds, because the algorithm dictates that $\rho'(y) \cup \rho''(y) = \rho(y)$.
+Thus, $\max \rho(x) < \min \rho(y) + k$ still holds for all simple bounds that $y$ is part of, which means their truth value stays unchanged.
+
+If the interval valuation of a variable which is not part of any of the false simple bounds is split, the truth values of these simple bounds are obviously not going to change. $k$ cannot change. $\square$
+
+
+%\paragraph{}
+%Informally, a simple bound being inconclusive arrises from the interval valuations being too big.
+%The algorithm reduces the size of the interval valuations by some means (for example by splitting the interval of a variable in half) each time step 3 is executed.
+%The further the interval valuations are reduced, the nearer we get to a result, which can be either that the formula is satisfiable or not.
+%For the figure this means that the solutions, if there're any, are found nearer to the bottom of that tree (if drawn the way as seen in fig.~\ref{?}).
+
+\paragraph{}
+\todo{Nodes in einem tree? Das klingt falsch...}
+The algorithm traverses the search tree by asserting the interval valuations which are represented as nodes in the tree.
+Whenever such an interval valuation is asserted, all possible cases are handled by the algorithm:
+
+\begin{itemize}
+    \item
+        \textbf{All constraints are true.}
+        In this case, the algorithm stops correctly with \emph{CSP $\mathcal{P}$ is satisfiable} because it found either a point solution or a set of solutions.
+    
+    \item
+        \textbf{At least one constraint is false.}
+        Because of Lemma~\ref{lemma:false-branches} we know that this branch of the search space is a dead-end.
+        In this case, the algorithm backtracks to a previously created but unused interval valuation to explore the branch of the search space that roots there.
+        If there's no such backtrack alternative, it means there are no branches left to explore, thus the algorithm stops correctly with \emph{CSP $\mathcal{P}$ is unsatisfiable}.
+    \item
+        \textbf{Neither of the two.}
+        In this case there's no way to tell if the CSP is satisfiable or not.
+        The algorithm opens up two new branches in the search tree in step 3, stores one as a backtrack alternative and continues the search in the other one.
+\end{itemize}
+
+\paragraph{}
+\todo{Das stimmt doch, oder?}
+As shown in section~\ref{ssec:prop1}, if a CSP $\mathcal{P}$ is satisfiable, each $\rho$ under which none of the constraints $c \in C$ are false contains a solution.
+Together with the fact that the algorithm traverses the branches of search tree which can contain a solution shows that the algorithm will find the solution if one is present.
+And if there're no branches left to explore, stop the search by saying that $\mathcal{P}$ is unsatisfiable.
+
+
+
+%Der Algorithmus durchsucht alle Äste des Suchbaums die eine Lösung enthalten können, bis eine Lösung gefunden wurde.
+%Weil der Suchbaum alle Lösungen enthält, ist der Algorithmus vollständig.
+%Und weil der Algorithmus nur mit satisfiable anhält, wenn alle Constraints wahr sind, ist er auch sound.
+
+
+%Each $c \in C$ can be in one of three separate states:
+%
+%\begin{enumerate}
+%    \item \texttt{true}
+%    \item \texttt{false}
+%    \item \texttt{inconclusive}
+%\end{enumerate}
+%
+%From this we can conclude, that, at all times, these seven possibilities of combinations of truth values of all $c \in C$ can occur:
+%
+%\begin{enumerate}
+%    \item All true
+%    \item All false
+%    \item All inconclusive
+%    \item Some true, some false
+%    \item Some true, some inconclusive
+%    \item Some false, some inconclusive
+%    \item Some true, some false, some inconclusive
+%\end{enumerate}
+%
+%The only times the truth values of the constraints can change at all are when the interval valuation changes, this can happen in steps 2 and 3.
+%Whenever this happens, the algorithm immediately goes to step 1.
+%
+%Step 1 correctly stops with $\mathcal{P}$ \emph{is satisfiable} when all $c \in C$ are true.
+%
+%The algorithm stops either in step 1 or step 2.
+%
+%
+%Steps 1 and 3 behave the same way, no matter how many steps the algorithm has made up to the current point of execution (there is no ``state'' except for $\rho$).
+
+%\subsubsection{Soundness}
+%
+%By contradiction.
+%
+%Let's assume a satisfiable CSP $\mathcal{P}$.
+%Let's further assume that the Algorithm $\mathcal{A}$ applied to that CSP stops with the answer \emph{$\mathcal{P}$ is unsatisfiable}.
+%
+%For this to happen, the algorithm must have come across the step 2 and discover that there are no previously unused decision steps, because this is the only way the algorithm stops with ``unsatisfiable''.
+%
+%This can only happen when the cases 2, 4, 6 or 7 occur, and step 3 was executed as many times as step 2.
+%
+%
+%\subsubsection{sldkf;dkfhlskjh}
+%
+%Im ersten Schritt diese Faelle:
+%
+%1. Alle True ->
+%stoppt korrekt mit satisfiable
+%
+%2. Alle oder wenigstens einer False -> 
+%Schritt 2
+%
+%3. Einige oder keine true, einige oder alle inkonklusiv ->
+%Schritt 3
+%
+%
+%Im zweiten Schritt (backtracking):
+%
+%1. Decision Level = 0 -> stoppt, mit unsatisfiable (z.b. der Fall direkt bei der 1. Iteration wenigstens ein constraint false ist)
+%
+%2. Decision Level > 0 -> 
+%Verwende neues $\rho$, dann Schritt 1
+%
+%
+%Im dritten Schritt:
+%
+%1. Es muss hier immer eine Variable geben, dessen $\rho$ wir aufteilen können.
+%Das ist auch der Fall, denn wenn in einem simple bound $x \geq y + k$ $|\rho(x)| = |\rho(y)| = 1$ gilt, ist dieses entweder true oder false, und somit nicht inkonklusiv. Wenn dies für alle Variablen gilt, sind auch alle SImple bounds entweder true oder false, was bedeuten würde das wir gar nicht in diesem Schritt landen würden.
