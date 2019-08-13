@@ -62,6 +62,11 @@
 \newtheorem{corollary}{Corollary}[theorem]
 \newtheorem{lemma}[theorem]{Lemma}
 
+\DeclareRobustCommand\full  {\tikz[baseline=-0.6ex]\draw[thick] (0,0)--(0.5,0);}
+\DeclareRobustCommand\dotted{\tikz[baseline=-0.6ex]\draw[thick,dotted] (0,0)--(0.54,0);}
+\DeclareRobustCommand\dashed{\tikz[baseline=-0.6ex]\draw[thick,dashed] (0,0)--(0.54,0);}
+\DeclareRobustCommand\chain {\tikz[baseline=-0.6ex]\draw[thick,dash dot dot] (0,0)--(0.5,0);}
+
 %Beginn des eigentlichen Dokumentes:
 %----------------------------------------------
 \begin{document}
@@ -80,8 +85,7 @@
 \newpage
 \input{sections/introduction}
 
-\section{Solutions to the exercises}
-\todo{Ich bin mit der Benennung des Abschnits nicht zufrieden}
+\section{Exercise Solutions}
 \input{sections/task-a}
 \input{sections/task-b}
 \input{sections/task-c}

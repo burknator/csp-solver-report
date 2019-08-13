@@ -6,23 +6,43 @@
 Algorithm $\mathcal{P}$ is both sound and complete, because it traverses the search space in a complete manner and only returns correct results.
 To explain this, we will use a tree-like structure as the search space and argue that the algorithm traverses this tree in a way that allows it to always stop with the correct result.
 
+\subsubsection{Search Space as a Tree-Structure}
+
+\begin{figure}[H]
+    \centering
+    \include{images/search-space-tree}
+    \caption{
+        A figure showing the search space as a tree-structure.
+    }
+    \label{fig:search-tree}
+\end{figure}
+
+
 \paragraph{}
-\todo{Draw search space}
-Fig.~\ref{?} shows the search space as a tree.
-Each node represents an interval valuation, with the root being the initial interval valuation and the children of each node being created as result of step 3 of the algorithm.
-The algorithm dictates that $\rho_{i} \cup \rho_{ii} = \rho$ and $\rho_{i} \cap \rho_{ii} = \emptyset$.
+Fig.~\ref{fig:search-tree} shows the search space as a tree.
+Each node represents an interval valuation, with $\rho^0$ being the initial interval valuation.
+Non-bend edges running from a top node to a bottom node represent a parent-child relationship, bent edges show a backtrack alternative.
+The children of a node are two interval valuations created from their parent as part of step 3 of algorithm $\mathcal{A}$.
+Dashed (\dashed) elements are known by the algorithm already, but not used, while dotted (\dotted) elements are not yet known at all, though they exist theoretically.
+
+$\rho^3$ is the current interval valuation, $\rho^4$ and $\rho^2$ are currently on the backtrack-alternative stack, in that order.
+$\rho^3$ is also a dead-end in the search space, meaning that at least one constraint is false under it.
+The bend edge from $\rho^3$ to $\rho^4$ shows that $\rho^4$ is the next available backtrack option, and the one from $\rho^4$ to $\rho^2$ shows that $\rho^2$ is the option after that.
+
+The algorithm dictates that $\rho^{i+1} \cup \rho^{i+2} = \rho^i$ and $\rho^{i+1} \cap \rho^{i+2} = \emptyset$, meaning that the two children of a parent are disjoint and together form the whole parent.
 Which is important, because otherwise parts of the variable intervals would be missing from, or occur more than once in the search space.
 
-%In the tree, all solutions are in the leaves.
-%The search space, and hence the tree, is big for a CSP with sufficiently many constraints, thus it's not feasible to build the whole tree to get to all solutions.
-%\todo{Glaube ich jedenfalls, muss noch mal geprüft werden...}
-%Thus, a depth-first search is done in this tree.
-%If an interval valuation under which all constraints are true is found, the algorithm stops immediately with \emph{CSP $\mathcal{P}$ is satisfiable}.
+\paragraph{}
+The algorithm traverses the tree by asserting the interval valuations represented as nodes in the tree.
+Step 3 of the algorithm would first create two children of a node and then, by asserting one of those, travers the edge from the parent node to the child node which represents the asserted interval valuation.
+Backtracking as described in step 2 of the algorithm is a lateral traversal along a bent edge in the tree.
+Step 1 of the algorithm does not result in any traversal inside the tree, since it does not change the current interval valuation.
+For the same reason no traversal happens when the algorithm stops with some result.
 
 \begin{lemma}\label{lemma:false-branches}
     %\todo{Either proof this or use something different than a lemma}
     Once an interval valuation $\rho$ is found which falsifies a single constraint, the entire branch rooting in that interval valuation can be ignored by the search for a result.
-    It is impossible for the truth value to change by further exploring this branch, because the condition $max \rho(x) < min \rho(y) + k$ for each false simple bound stays false. 
+    It is impossible for the truth value to change by further exploring this branch, because the condition $\max \rho(x) < \min \rho(y) + k$ for each false simple bound stays true (see def.~4~\cite{MF19}). 
 \end{lemma}
 
 
@@ -37,7 +57,7 @@ Let $\rho'(x)$ and $\rho''(x)$ be interval valuations created from $\rho(x)$ acc
 We know that $\max \rho'(x), \max \rho''(x) \leq \max \rho(x)$ holds, because the algorithm dictates that $\rho'(x) \cup \rho''(x) = \rho(x)$.
 Thus, $\max \rho(x) < \min \rho(y) + k$ still holds for all simple bounds that $x$ is part of, which means their truth value stays unchanged.
 
-Let $y \in X$, $\rho(y)$, $\rho'(y)$ and $\rho''(y)$ be a created analogous to before.
+Let $y \in X$, $\rho(y)$, $\rho'(y)$ and $\rho''(y)$ be created analogous to before.
 We know that $\min \rho'(y), \min \rho''(y) \geq \min \rho(y)$ holds, because the algorithm dictates that $\rho'(y) \cup \rho''(y) = \rho(y)$.
 Thus, $\max \rho(x) < \min \rho(y) + k$ still holds for all simple bounds that $y$ is part of, which means their truth value stays unchanged.
 
@@ -51,7 +71,6 @@ If the interval valuation of a variable which is not part of any of the false si
 %For the figure this means that the solutions, if there're any, are found nearer to the bottom of that tree (if drawn the way as seen in fig.~\ref{?}).
 
 \paragraph{}
-\todo{Nodes in einem tree? Das klingt falsch...}
 The algorithm traverses the search tree by asserting the interval valuations which are represented as nodes in the tree.
 Whenever such an interval valuation is asserted, all possible cases are handled by the algorithm:
 
@@ -71,12 +90,14 @@ Whenever such an interval valuation is asserted, all possible cases are handled 
         The algorithm opens up two new branches in the search tree in step 3, stores one as a backtrack alternative and continues the search in the other one.
 \end{itemize}
 
-\paragraph{}
-\todo{Das stimmt doch, oder?}
-As shown in section~\ref{ssec:prop1}, if a CSP $\mathcal{P}$ is satisfiable, each $\rho$ under which none of the constraints $c \in C$ are false contains a solution.
-The fact that the algorithm ignores parts of the search space which are known to not contain a solution, but keeps searching in parts that still could, it will get to a result any time.
+\todo[inline]{Schlusssatz}
 
-\todo[inline]{Completeness and soundness noch mal extra herausstellen, also welche Teil jetzt fuer was sorgt}
+%\paragraph{}
+%\todo{Das stimmt dochx, oder?}
+%As shown in section~\ref{ssec:prop1}, if a CSP $\mathcal{P}$ is satisfiable, each $\rho$ under which none of the constraints $c \in C$ are false contains a solution.
+%The fact that the algorithm ignores parts of the search space which are known to not contain a solution, but keeps searching in parts that still could, it will get to a result any time.
+%
+%\todo[inline]{Completeness and soundness noch mal extra herausstellen, also welche Teil jetzt fuer was sorgt}
 
 
 %Der Algorithmus durchsucht alle Äste des Suchbaums die eine Lösung enthalten können, bis eine Lösung gefunden wurde.

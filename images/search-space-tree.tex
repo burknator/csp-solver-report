@@ -1,0 +1,25 @@
+\begin{tikzpicture}[initial text=, ->,>=stealth',shorten >=0pt,auto,node distance=2cm, semithick, scale = 0.9, transform shape]
+\begin{scope}
+    \node [state] (p0) {$\rho^0$};
+    \node [state] (p1) [below of=p0, left=2] {$\rho^1$};
+    \node [state] (p2) [below of=p0, right=2, dashed]{$\rho^2$};
+    \node [state, fill=red!20] (p3) [below of=p1, left=2] {$\rho^3$};
+    \node [state] (p4) [below of=p1, right=2, dashed] {$\rho^4$};
+    \node [state] (p5) [below of=p4, left=1, dotted] {$\rho^5$};
+    \node [state] (p6) [below of=p4, right=1, dotted] {$\rho^6$};
+    \node [state] (p7) [below of=p3, left=1, dotted] {$\rho^7$};
+    \node [state] (p8) [below of=p3, right=1, dotted] {$\rho^8$};
+    
+    \path (p0) edge [left] node {$x_i$} (p1)
+          (p0) edge [right, dashed] node {$x_i$} (p2)
+          (p1) edge [left] node {$x_{ii}$} (p3)
+          (p1) edge [right, dashed] node {$x_{ii}$} (p4)
+          (p4) edge [left, dotted] node {$x_{i}$} (p5)
+          (p4) edge [right, dotted] node {$x_{i}$} (p6)
+          (p4) edge [bend left=20, dashed] node {$b_1$} (p2)
+          (p3) edge [bend left=20, dashed] node {$b_2$} (p4)
+          (p3) edge [left, dotted] node {$x_i$} (p7)
+          (p3) edge [right, dotted] node {$x_i$} (p8);
+
+\end{scope}
+\end{tikzpicture}
