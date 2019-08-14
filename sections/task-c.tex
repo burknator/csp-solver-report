@@ -4,5 +4,48 @@
 \item Why is constraint solving NP-complete for the given type of constraints formulae?
 \end{enumerate}
 
-Because, as stated in~\cite{MF19}, CSPs are a strong generalisation of the boolean satisfiability problem, which is already NP-complete.
-\todo[inline]{Aber wieso jetzt unser simple CSP auch?}
+Because using the following rules, a simple CSP problem can be created from arbitrary boolean SAT problems, which are known to be NP-complete.
+
+\paragraph{}
+Let $F_{sat}$ be a formula of a boolean SAT problem, with $n$ clauses and $m$ literals.
+Let $F_{csp}$ be a formula of a CSP as defined in def.~3 from~\cite{MF19}, where $F_{csp} = k_1 \wedge\, k_2 \wedge\, ...$ and $k_{*}$ be constraints as defined in def.~2 from~\cite{MF19}.
+Let $c_j$ be a clause, $l_i$ be a literal in $F_{sat}$, with $j \in \{1,..., n\}$ and $i \in \{1, ..., m\}$.
+$z \in [0, 0]$ is an integer variable representing the value 0, and $k \in \mathbb{Z}$.
+
+\begin{enumerate}
+    \item For every literal $l_i$ in $F_{sat}$ a variable $x_i$ in $F_{csp}$ is created, with $D_i = [0,1]$.
+    \item For every clause $c_j$ in $F_{sat}$:
+    \begin{enumerate}
+        \item A variable $y_j$ in $F_{csp}$ is created, with $D_j = [0,1]$.
+            \item For every literal $l_i$ in that clause, a simple bound of the form $y_j \geq x_i + k$ is created, with
+            \begin{enumerate}
+                \item $k=0$ when the literal in $F_{sat}$ is \textbf{not} negated
+                \item $k=1$ when the literal in $F_{sat}$ is negated
+            \end{enumerate}
+    \end{enumerate}
+    \item A constraint is created in $F_{csp}$, which for each $y_j$ contains a simple bound of the form $y_j \geq z + 1$.
+\end{enumerate}
+
+\paragraph{}
+The following formulae show a very simple boolean SAT formula and it's CSP counterpart, constructed by the aforementioned rules:
+
+\begin{align*}
+    F_{sat} =\, &x_1\\
+    F_{csp} =\, &(y_1 \geq x_1 + 0) \wedge (y_1 \geq z + 1)
+\end{align*}
+
+\paragraph{}
+Here is a more complex example, with colouring to aid in identifying related parts:
+
+\begin{align*}
+    F_{sat} =\,      &\textcolor{blue}{ (\neg x_1 \vee x_2 \vee x_3) }\\
+            \wedge\, &\textcolor{red}{  (x_1 \vee \neg x_2)          }\\
+    \\
+    F_{csp} =\,      &\textcolor{blue}{ (y_1 \geq x_1 + 1 \vee y_2 \geq x_2 + 0 \vee y_3 \geq x_3 + 0) }\\
+            \wedge\, &\textcolor{red}{  (y_4 \geq x_1 + 0 \vee y_5 \geq x_2 + 1)                       }\\
+            \wedge\, &\textcolor{blue}{ (y_1 \geq z + 1 \vee y_2 \geq z + 1 \vee y_3 \geq z + 1)       }\\
+            \wedge\, &\textcolor{red}{  (y_4 \geq z + 1 \vee y_5 \geq z + 1)                           }
+\end{align*}
+
+If a solution of a CSP created this way is found, that solution also solves the according boolean SAT problem.
+And because boolean SAT problems are known to be NP-complete, simple CSPs as defined in def.~1 from~\cite{MF19} are also.
