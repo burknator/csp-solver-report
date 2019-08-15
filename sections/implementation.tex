@@ -92,4 +92,25 @@ In that case, the implementation switches to the state \texttt{State.CONSISTENCY
 \subsubsection{Lazy Clause Evaluation \& Decision Heuristics}
 
 \paragraph{}
-\todo[inline]{Grob skizzieren}
+Because of time constraints, neither of these optimisations could be implemented, but we wanted to give a rough idea of what we would've liked to implement.
+
+\paragraph{Lazy Clause Evaluation}
+The idea here was to implement some kind of observer pattern.
+The classes \texttt{Variable} and \texttt{SimpleBound} would be become observables, and \texttt{SimpleBound} and \texttt{Constraint} would become observers.
+\texttt{SimpleBound}-instances would be observers of the variables contained in them, analogous \texttt{Constraint}-instances would become observers of the simple bounds contained in them.
+
+Whenever a variable changes, it sends a signal to its observers (i.e. the simple bounds the variable is a part of).
+Upon receiving this signal, the simple bound computes its new truth value, stores it inside a class member and sends a signal to its observers (i.e. the constraints it's part of, which is usually only one).
+Those \texttt{Constraint}-instances also compute and store their new truth value, but don't send any signal as they're not observables.
+
+When calling the respective truth-value-methods of simple bounds and constraints, the stored truth value is simply returned.
+This way, truth values are only computed when it's possible for them to change.
+Compared to the current implementation, this would save a lot of loop iterations, as currently the truth value is re-computed every time when it's asked for.
+But we didn't calculate how many iterations exactly would've been saved.
+
+
+\paragraph{Decision Heuristics}
+We would've liked to implement a very random decision step, where variable choice, interval splitting and interval deciding were done completely random.
+Using command-line-interface flags, one were supposed to be able to select any combination of these three to be random.
+This way a small benchmark could've been done to see which of the three had the biggest impact on performance.
+For this to be feasible and to actually benefit from this, we would've needed a lot of example CSPs.
