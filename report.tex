@@ -30,6 +30,7 @@
 
 \usepackage{todonotes}
 \usepackage[toc]{appendix}
+\usepackage{caption} % Allows to exclude caption numbering by using \caption*{}
 
 
 % Titel in Kopfzeilen
@@ -66,6 +67,11 @@
 \DeclareRobustCommand\dotted{\tikz[baseline=-0.6ex]\draw[thick,dotted] (0,0)--(0.54,0);}
 \DeclareRobustCommand\dashed{\tikz[baseline=-0.6ex]\draw[thick,dashed] (0,0)--(0.54,0);}
 \DeclareRobustCommand\chain {\tikz[baseline=-0.6ex]\draw[thick,dash dot dot] (0,0)--(0.5,0);}
+
+\newcommand*{\SignatureAndDate}[1]{%
+    \par\noindent\makebox[2.5in]{\hrulefill} \hfill\makebox[2.0in]{\hrulefill}%
+    \par\noindent\makebox[2.5in][l]{#1}      \hfill\makebox[1.95in][l]{Date}%
+}%
 
 %Beginn des eigentlichen Dokumentes:
 %----------------------------------------------
