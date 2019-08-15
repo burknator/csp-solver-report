@@ -1,7 +1,9 @@
 
-\section{Parser implementation}
+\subsection{Parser implementation}
+
 The parser is mostly comprised of two states. After preparing the incoming String by removing all formatting symbols like \textbackslash n or \textbackslash t and skipping initial whitespace, the program expects the letters ''DECL''. Finding these prompts the parser to go into its first state of reading the declaration of variables. In each row it first expects the variable name, then its minimum value and lastly its maximum value. Between each entry there has to be at least one blank, while the name can be of varying length greater than or equal to one symbol. All variables are stored in a list.
 
 This is repeated for each row of variable declarations, until the parser detects ''FORMULA'' as the next 7 symbols. When it does, it goes into the second state, where it accepts rows of constraints. These constraints are simple bounds divided by a ''v''. The parser expects for each simple bound to be of the form ''x >= y + k", even if the k equals 0. After each ''v'' a simple bound is stored in a list, using the variable list from before to find the corresponding variables in each simple bound. When the parser detects a semicolon, it assumes one constraint notation to be complete and creates such a constraint using all simple bounds stored in the list. The constraint in turn gets stored in another list.
 
 When the end of the input file is reached, the constraints are used to create the actual formula.
+The parser then returns that formula for use in the CSP solver.
