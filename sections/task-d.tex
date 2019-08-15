@@ -9,4 +9,8 @@
     Remark: we consider the algorithm here in theory and not its behavior on a resource limited machine.
 \end{enumerate}
 
+Using $\mathcal{A}$ on $\mathcal{P}$ should have no effect on the the algorithm being correct, as long as it terminates. Splitting intervals is easier than before, since one is no longer restricted to only picking whole numbers to split intervals at. We are looking at the algorithm in a theoretical way and without the restrictions of a resource-limited machine, determining if two numbers are equal should not be a problem either. 
+
+If a constraint is considered inconclusive and the splitting of an interval is induced, the constraint may keep being inconclusive, despite the variable interval being split. This process can keep repeating, because the termination condition is only fulfilled, when the amount of elements in the chosen interval is lower than 1. For real numbers, this can not be true, since there are infinite numbers between every two numbers. In this case of repeated splitting of an interval without any effect on the constraint being inconclusive, the algorithm does not terminate.
+
 
