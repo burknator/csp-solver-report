@@ -1,0 +1,61 @@
+DECL
+    x 0 1;
+    y 2 3;
+    
+FORMULA
+    x >= y + 0;
+    y >= x + 5;
+
+Using algorithm A.
+Solving formula: x >= y + 0 /\ y >= x + 5
+------------------------------------------------------------------------
+Consistency check
+Formula  is false:
+    Constraint  is false:
+        Simple bound x >= y + 0 is false with valuation:
+            x: [0, 1]
+            y: [2, 3]
+            k: 0
+    Constraint  is false:
+        Simple bound y >= x + 5 is false with valuation:
+            y: [2, 3]
+            x: [0, 1]
+            k: 5
+At least one constraint in formula x >= y + 0 /\ y >= x + 5 is false,\
+    backtracking.
+------------------------------------------------------------------------
+Backtracking
+No backtrack alternatives available, formula  is not satisfiable.
+------------------------------------------------------------------------
+Valuation:
+    x: [0, 1]
+    y: [2, 3]
+Completed in 2 steps.
+The formula is not satisfiable.
+
+Using algorithm B.
+Solving formula: x >= y + 0 /\ y >= x + 5
+------------------------------------------------------------------------
+Consistency check
+Formula  is false:
+    Constraint  is false:
+        Simple bound x >= y + 0 is false with valuation:
+            x: [0, 1]
+            y: [2, 3]
+            k: 0
+    Constraint  is false:
+        Simple bound y >= x + 5 is false with valuation:
+            y: [2, 3]
+            x: [0, 1]
+            k: 5
+At least one constraint in formula x >= y + 0 /\ y >= x + 5 is false,\
+    backtracking.
+------------------------------------------------------------------------
+Backtracking
+No backtrack alternatives available, formula  is not satisfiable.
+------------------------------------------------------------------------
+Valuation:
+    x: [0, 1]
+    y: [2, 3]
+Completed in 2 steps.
+The formula is not satisfiable.

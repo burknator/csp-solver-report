@@ -1,0 +1,357 @@
+DECL
+    x 0 1;
+    y 4 20;
+    z 10 15;
+    
+FORMULA
+    x >= y + 0 v y >= z + 4;
+
+Using algorithm A.
+Solving formula: x >= y + 0 v y >= z + 4
+------------------------------------------------------------------------
+Consistency check
+Formula  is inconclusive:
+    Constraint  is inconclusive:
+        Simple bound x >= y + 0 is false with valuation:
+            x: [0, 1]
+            y: [4, 20]
+            k: 0
+        Simple bound y >= z + 4 is inconclusive with valuation:
+            y: [4, 20]
+            z: [10, 15]
+            k: 4
+------------------------------------------------------------------------
+Decision step
+Splitting variable x into [0, 0] and [1, 1]
+Opening decision level 1
+Changing valuation for x from [0, 1] to [0, 0]
+------------------------------------------------------------------------
+Consistency check
+Formula  is inconclusive:
+    Constraint  is inconclusive:
+        Simple bound x >= y + 0 is false with valuation:
+            x: [0, 0]
+            y: [4, 20]
+            k: 0
+        Simple bound y >= z + 4 is inconclusive with valuation:
+            y: [4, 20]
+            z: [10, 15]
+            k: 4
+------------------------------------------------------------------------
+Decision step
+Splitting variable y into [4, 12] and [13, 20]
+Opening decision level 2
+Changing valuation for y from [4, 20] to [4, 12]
+------------------------------------------------------------------------
+Consistency check
+Formula  is false:
+    Constraint  is false:
+        Simple bound x >= y + 0 is false with valuation:
+            x: [0, 0]
+            y: [4, 12]
+            k: 0
+        Simple bound y >= z + 4 is false with valuation:
+            y: [4, 12]
+            z: [10, 15]
+            k: 4
+At least one constraint in formula x >= y + 0 v y >= z + 4 is false,\
+    backtracking.
+------------------------------------------------------------------------
+Backtracking
+Returning to decision level 1
+Changing valuation for y from [4, 12] to [13, 20]
+------------------------------------------------------------------------
+Consistency check
+Formula  is inconclusive:
+    Constraint  is inconclusive:
+        Simple bound x >= y + 0 is false with valuation:
+            x: [0, 0]
+            y: [13, 20]
+            k: 0
+        Simple bound y >= z + 4 is inconclusive with valuation:
+            y: [13, 20]
+            z: [10, 15]
+            k: 4
+------------------------------------------------------------------------
+Decision step
+Splitting variable z into [10, 12] and [13, 15]
+Opening decision level 2
+Changing valuation for z from [10, 15] to [10, 12]
+------------------------------------------------------------------------
+Consistency check
+Formula  is inconclusive:
+    Constraint  is inconclusive:
+        Simple bound x >= y + 0 is false with valuation:
+            x: [0, 0]
+            y: [13, 20]
+            k: 0
+        Simple bound y >= z + 4 is inconclusive with valuation:
+            y: [13, 20]
+            z: [10, 12]
+            k: 4
+------------------------------------------------------------------------
+Decision step
+Splitting variable y into [13, 16] and [17, 20]
+Opening decision level 3
+Changing valuation for y from [13, 20] to [13, 16]
+------------------------------------------------------------------------
+Consistency check
+Formula  is inconclusive:
+    Constraint  is inconclusive:
+        Simple bound x >= y + 0 is false with valuation:
+            x: [0, 0]
+            y: [13, 16]
+            k: 0
+        Simple bound y >= z + 4 is inconclusive with valuation:
+            y: [13, 16]
+            z: [10, 12]
+            k: 4
+------------------------------------------------------------------------
+Decision step
+Splitting variable z into [10, 11] and [12, 12]
+Opening decision level 4
+Changing valuation for z from [10, 12] to [10, 11]
+------------------------------------------------------------------------
+Consistency check
+Formula  is inconclusive:
+    Constraint  is inconclusive:
+        Simple bound x >= y + 0 is false with valuation:
+            x: [0, 0]
+            y: [13, 16]
+            k: 0
+        Simple bound y >= z + 4 is inconclusive with valuation:
+            y: [13, 16]
+            z: [10, 11]
+            k: 4
+------------------------------------------------------------------------
+Decision step
+Splitting variable y into [13, 14] and [15, 16]
+Opening decision level 5
+Changing valuation for y from [13, 16] to [13, 14]
+------------------------------------------------------------------------
+Consistency check
+Formula  is inconclusive:
+    Constraint  is inconclusive:
+        Simple bound x >= y + 0 is false with valuation:
+            x: [0, 0]
+            y: [13, 14]
+            k: 0
+        Simple bound y >= z + 4 is inconclusive with valuation:
+            y: [13, 14]
+            z: [10, 11]
+            k: 4
+------------------------------------------------------------------------
+Decision step
+Splitting variable z into [10, 10] and [11, 11]
+Opening decision level 6
+Changing valuation for z from [10, 11] to [10, 10]
+------------------------------------------------------------------------
+Consistency check
+Formula  is inconclusive:
+    Constraint  is inconclusive:
+        Simple bound x >= y + 0 is false with valuation:
+            x: [0, 0]
+            y: [13, 14]
+            k: 0
+        Simple bound y >= z + 4 is inconclusive with valuation:
+            y: [13, 14]
+            z: [10, 10]
+            k: 4
+------------------------------------------------------------------------
+Decision step
+Splitting variable y into [13, 13] and [14, 14]
+Opening decision level 7
+Changing valuation for y from [13, 14] to [13, 13]
+------------------------------------------------------------------------
+Consistency check
+Formula  is false:
+    Constraint  is false:
+        Simple bound x >= y + 0 is false with valuation:
+            x: [0, 0]
+            y: [13, 13]
+            k: 0
+        Simple bound y >= z + 4 is false with valuation:
+            y: [13, 13]
+            z: [10, 10]
+            k: 4
+At least one constraint in formula x >= y + 0 v y >= z + 4 is false,\
+    backtracking.
+------------------------------------------------------------------------
+Backtracking
+Returning to decision level 6
+Changing valuation for y from [13, 13] to [14, 14]
+------------------------------------------------------------------------
+Consistency check
+Formula  is true:
+    Constraint  is true:
+        Simple bound x >= y + 0 is false with valuation:
+            x: [0, 0]
+            y: [14, 14]
+            k: 0
+        Simple bound y >= z + 4 is true with valuation:
+            y: [14, 14]
+            z: [10, 10]
+            k: 4
+------------------------------------------------------------------------
+Valuation:
+    x: [0, 0]
+    y: [14, 14]
+    z: [10, 10]
+Completed in 21 steps.
+The formula is satisfiable.
+
+Using algorithm B.
+Solving formula: x >= y + 0 v y >= z + 4
+------------------------------------------------------------------------
+Consistency check
+Formula  is inconclusive:
+    Constraint  is inconclusive:
+        Simple bound x >= y + 0 is false with valuation:
+            x: [0, 1]
+            y: [4, 20]
+            k: 0
+        Simple bound y >= z + 4 is inconclusive with valuation:
+            y: [4, 20]
+            z: [10, 15]
+            k: 4
+Deducing new valuations
+    Constraint  is unit
+        Changing valuation for y from [4, 20] to [14, 20]
+Successfully narrowed down a variable
+------------------------------------------------------------------------
+Consistency check
+Formula  is inconclusive:
+    Constraint  is inconclusive:
+        Simple bound x >= y + 0 is false with valuation:
+            x: [0, 1]
+            y: [14, 20]
+            k: 0
+        Simple bound y >= z + 4 is inconclusive with valuation:
+            y: [14, 20]
+            z: [10, 15]
+            k: 4
+Deducing new valuations
+    Constraint  is unit
+Couldn't narrow down any variables
+------------------------------------------------------------------------
+Decision step
+Splitting variable x into [0, 0] and [1, 1]
+Opening decision level 1
+Changing valuation for x from [0, 1] to [0, 0]
+------------------------------------------------------------------------
+Consistency check
+Formula  is inconclusive:
+    Constraint  is inconclusive:
+        Simple bound x >= y + 0 is false with valuation:
+            x: [0, 0]
+            y: [14, 20]
+            k: 0
+        Simple bound y >= z + 4 is inconclusive with valuation:
+            y: [14, 20]
+            z: [10, 15]
+            k: 4
+Deducing new valuations
+    Constraint  is unit
+Couldn't narrow down any variables
+------------------------------------------------------------------------
+Decision step
+Splitting variable y into [14, 17] and [18, 20]
+Opening decision level 2
+Changing valuation for y from [14, 20] to [14, 17]
+------------------------------------------------------------------------
+Consistency check
+Formula  is inconclusive:
+    Constraint  is inconclusive:
+        Simple bound x >= y + 0 is false with valuation:
+            x: [0, 0]
+            y: [14, 17]
+            k: 0
+        Simple bound y >= z + 4 is inconclusive with valuation:
+            y: [14, 17]
+            z: [10, 15]
+            k: 4
+Deducing new valuations
+    Constraint  is unit
+        Changing valuation for z from [10, 15] to [10, 13]
+Successfully narrowed down a variable
+------------------------------------------------------------------------
+Consistency check
+Formula  is inconclusive:
+    Constraint  is inconclusive:
+        Simple bound x >= y + 0 is false with valuation:
+            x: [0, 0]
+            y: [14, 17]
+            k: 0
+        Simple bound y >= z + 4 is inconclusive with valuation:
+            y: [14, 17]
+            z: [10, 13]
+            k: 4
+Deducing new valuations
+    Constraint  is unit
+Couldn't narrow down any variables
+------------------------------------------------------------------------
+Decision step
+Splitting variable z into [10, 11] and [12, 13]
+Opening decision level 3
+Changing valuation for z from [10, 13] to [10, 11]
+------------------------------------------------------------------------
+Consistency check
+Formula  is inconclusive:
+    Constraint  is inconclusive:
+        Simple bound x >= y + 0 is false with valuation:
+            x: [0, 0]
+            y: [14, 17]
+            k: 0
+        Simple bound y >= z + 4 is inconclusive with valuation:
+            y: [14, 17]
+            z: [10, 11]
+            k: 4
+Deducing new valuations
+    Constraint  is unit
+Couldn't narrow down any variables
+------------------------------------------------------------------------
+Decision step
+Splitting variable y into [14, 15] and [16, 17]
+Opening decision level 4
+Changing valuation for y from [14, 17] to [14, 15]
+------------------------------------------------------------------------
+Consistency check
+Formula  is inconclusive:
+    Constraint  is inconclusive:
+        Simple bound x >= y + 0 is false with valuation:
+            x: [0, 0]
+            y: [14, 15]
+            k: 0
+        Simple bound y >= z + 4 is inconclusive with valuation:
+            y: [14, 15]
+            z: [10, 11]
+            k: 4
+Deducing new valuations
+    Constraint  is unit
+Couldn't narrow down any variables
+------------------------------------------------------------------------
+Decision step
+Splitting variable z into [10, 10] and [11, 11]
+Opening decision level 5
+Changing valuation for z from [10, 11] to [10, 10]
+------------------------------------------------------------------------
+Consistency check
+Formula  is true:
+    Constraint  is true:
+        Simple bound x >= y + 0 is false with valuation:
+            x: [0, 0]
+            y: [14, 15]
+            k: 0
+        Simple bound y >= z + 4 is true with valuation:
+            y: [14, 15]
+            z: [10, 10]
+            k: 4
+------------------------------------------------------------------------
+Valuation:
+    x: [0, 0]
+    y: [14, 15]
+    z: [10, 10]
+Completed in 13 steps.
+The formula is satisfiable.
+
+Process finished with exit code 0

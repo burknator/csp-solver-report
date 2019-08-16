@@ -1,0 +1,393 @@
+DECL
+    x_0 0 0;
+    x_1 1 6;
+    x_2 -2 3;
+
+FORMULA
+    x_1 >= x_0 + 5 v x_2 >= x_1 + -5;
+    x_0 >= x_2 + 2 v x_1 >= x_2 + 4;
+
+Using algorithm A.
+Solving formula: x_1 >= x_0 + 5 v x_2 >= x_1 + -5 /\ x_0 >= x_2 + 2 v\
+    x_1 >= x_2 + 4
+------------------------------------------------------------------------
+Consistency check
+Formula  is inconclusive:
+    Constraint  is inconclusive:
+        Simple bound x_1 >= x_0 + 5 is inconclusive with valuation:
+            x_1: [1, 6]
+            x_0: [0, 0]
+            k: 5
+        Simple bound x_2 >= x_1 + -5 is inconclusive with valuation:
+            x_2: [-2, 3]
+            x_1: [1, 6]
+            k: -5
+    Constraint  is inconclusive:
+        Simple bound x_0 >= x_2 + 2 is inconclusive with valuation:
+            x_0: [0, 0]
+            x_2: [-2, 3]
+            k: 2
+        Simple bound x_1 >= x_2 + 4 is inconclusive with valuation:
+            x_1: [1, 6]
+            x_2: [-2, 3]
+            k: 4
+------------------------------------------------------------------------
+Decision step
+Splitting variable x_1 into [1, 3] and [4, 6]
+Opening decision level 1
+Changing valuation for x_1 from [1, 6] to [1, 3]
+------------------------------------------------------------------------
+Consistency check
+Formula  is inconclusive:
+    Constraint  is true:
+        Simple bound x_1 >= x_0 + 5 is false with valuation:
+            x_1: [1, 3]
+            x_0: [0, 0]
+            k: 5
+        Simple bound x_2 >= x_1 + -5 is true with valuation:
+            x_2: [-2, 3]
+            x_1: [1, 3]
+            k: -5
+    Constraint  is inconclusive:
+        Simple bound x_0 >= x_2 + 2 is inconclusive with valuation:
+            x_0: [0, 0]
+            x_2: [-2, 3]
+            k: 2
+        Simple bound x_1 >= x_2 + 4 is inconclusive with valuation:
+            x_1: [1, 3]
+            x_2: [-2, 3]
+            k: 4
+------------------------------------------------------------------------
+Decision step
+Splitting variable x_2 into [-2, 0] and [1, 3]
+Opening decision level 2
+Changing valuation for x_2 from [-2, 3] to [-2, 0]
+------------------------------------------------------------------------
+Consistency check
+Formula  is inconclusive:
+    Constraint  is true:
+        Simple bound x_1 >= x_0 + 5 is false with valuation:
+            x_1: [1, 3]
+            x_0: [0, 0]
+            k: 5
+        Simple bound x_2 >= x_1 + -5 is true with valuation:
+            x_2: [-2, 0]
+            x_1: [1, 3]
+            k: -5
+    Constraint  is inconclusive:
+        Simple bound x_0 >= x_2 + 2 is inconclusive with valuation:
+            x_0: [0, 0]
+            x_2: [-2, 0]
+            k: 2
+        Simple bound x_1 >= x_2 + 4 is inconclusive with valuation:
+            x_1: [1, 3]
+            x_2: [-2, 0]
+            k: 4
+------------------------------------------------------------------------
+Decision step
+Splitting variable x_1 into [1, 2] and [3, 3]
+Opening decision level 3
+Changing valuation for x_1 from [1, 3] to [1, 2]
+------------------------------------------------------------------------
+Consistency check
+Formula  is inconclusive:
+    Constraint  is true:
+        Simple bound x_1 >= x_0 + 5 is false with valuation:
+            x_1: [1, 2]
+            x_0: [0, 0]
+            k: 5
+        Simple bound x_2 >= x_1 + -5 is true with valuation:
+            x_2: [-2, 0]
+            x_1: [1, 2]
+            k: -5
+    Constraint  is inconclusive:
+        Simple bound x_0 >= x_2 + 2 is inconclusive with valuation:
+            x_0: [0, 0]
+            x_2: [-2, 0]
+            k: 2
+        Simple bound x_1 >= x_2 + 4 is inconclusive with valuation:
+            x_1: [1, 2]
+            x_2: [-2, 0]
+            k: 4
+------------------------------------------------------------------------
+Decision step
+Splitting variable x_2 into [-2, -1] and [0, 0]
+Opening decision level 4
+Changing valuation for x_2 from [-2, 0] to [-2, -1]
+------------------------------------------------------------------------
+Consistency check
+Formula  is inconclusive:
+    Constraint  is true:
+        Simple bound x_1 >= x_0 + 5 is false with valuation:
+            x_1: [1, 2]
+            x_0: [0, 0]
+            k: 5
+        Simple bound x_2 >= x_1 + -5 is true with valuation:
+            x_2: [-2, -1]
+            x_1: [1, 2]
+            k: -5
+    Constraint  is inconclusive:
+        Simple bound x_0 >= x_2 + 2 is inconclusive with valuation:
+            x_0: [0, 0]
+            x_2: [-2, -1]
+            k: 2
+        Simple bound x_1 >= x_2 + 4 is inconclusive with valuation:
+            x_1: [1, 2]
+            x_2: [-2, -1]
+            k: 4
+------------------------------------------------------------------------
+Decision step
+Splitting variable x_1 into [1, 1] and [2, 2]
+Opening decision level 5
+Changing valuation for x_1 from [1, 2] to [1, 1]
+------------------------------------------------------------------------
+Consistency check
+Formula  is inconclusive:
+    Constraint  is true:
+        Simple bound x_1 >= x_0 + 5 is false with valuation:
+            x_1: [1, 1]
+            x_0: [0, 0]
+            k: 5
+        Simple bound x_2 >= x_1 + -5 is true with valuation:
+            x_2: [-2, -1]
+            x_1: [1, 1]
+            k: -5
+    Constraint  is inconclusive:
+        Simple bound x_0 >= x_2 + 2 is inconclusive with valuation:
+            x_0: [0, 0]
+            x_2: [-2, -1]
+            k: 2
+        Simple bound x_1 >= x_2 + 4 is false with valuation:
+            x_1: [1, 1]
+            x_2: [-2, -1]
+            k: 4
+------------------------------------------------------------------------
+Decision step
+Splitting variable x_2 into [-2, -2] and [-1, -1]
+Opening decision level 6
+Changing valuation for x_2 from [-2, -1] to [-2, -2]
+------------------------------------------------------------------------
+Consistency check
+Formula  is true:
+    Constraint  is true:
+        Simple bound x_1 >= x_0 + 5 is false with valuation:
+            x_1: [1, 1]
+            x_0: [0, 0]
+            k: 5
+        Simple bound x_2 >= x_1 + -5 is true with valuation:
+            x_2: [-2, -2]
+            x_1: [1, 1]
+            k: -5
+    Constraint  is true:
+        Simple bound x_0 >= x_2 + 2 is true with valuation:
+            x_0: [0, 0]
+            x_2: [-2, -2]
+            k: 2
+        Simple bound x_1 >= x_2 + 4 is false with valuation:
+            x_1: [1, 1]
+            x_2: [-2, -2]
+            k: 4
+------------------------------------------------------------------------
+Valuation:
+    x_0: [0, 0]
+    x_1: [1, 1]
+    x_2: [-2, -2]
+Completed in 13 steps.
+The formula is satisfiable.
+
+Using algorithm B.
+Solving formula: x_1 >= x_0 + 5 v x_2 >= x_1 + -5 /\ x_0 >= x_2 + 2 v\
+    x_1 >= x_2 + 4
+------------------------------------------------------------------------
+Consistency check
+Formula  is inconclusive:
+    Constraint  is inconclusive:
+        Simple bound x_1 >= x_0 + 5 is inconclusive with valuation:
+            x_1: [1, 6]
+            x_0: [0, 0]
+            k: 5
+        Simple bound x_2 >= x_1 + -5 is inconclusive with valuation:
+            x_2: [-2, 3]
+            x_1: [1, 6]
+            k: -5
+    Constraint  is inconclusive:
+        Simple bound x_0 >= x_2 + 2 is inconclusive with valuation:
+            x_0: [0, 0]
+            x_2: [-2, 3]
+            k: 2
+        Simple bound x_1 >= x_2 + 4 is inconclusive with valuation:
+            x_1: [1, 6]
+            x_2: [-2, 3]
+            k: 4
+Deducing new valuations
+Couldn't narrow down any variables
+------------------------------------------------------------------------
+Decision step
+Splitting variable x_1 into [1, 3] and [4, 6]
+Opening decision level 1
+Changing valuation for x_1 from [1, 6] to [1, 3]
+------------------------------------------------------------------------
+Consistency check
+Formula  is inconclusive:
+    Constraint  is true:
+        Simple bound x_1 >= x_0 + 5 is false with valuation:
+            x_1: [1, 3]
+            x_0: [0, 0]
+            k: 5
+        Simple bound x_2 >= x_1 + -5 is true with valuation:
+            x_2: [-2, 3]
+            x_1: [1, 3]
+            k: -5
+    Constraint  is inconclusive:
+        Simple bound x_0 >= x_2 + 2 is inconclusive with valuation:
+            x_0: [0, 0]
+            x_2: [-2, 3]
+            k: 2
+        Simple bound x_1 >= x_2 + 4 is inconclusive with valuation:
+            x_1: [1, 3]
+            x_2: [-2, 3]
+            k: 4
+Deducing new valuations
+Couldn't narrow down any variables
+------------------------------------------------------------------------
+Decision step
+Splitting variable x_2 into [-2, 0] and [1, 3]
+Opening decision level 2
+Changing valuation for x_2 from [-2, 3] to [-2, 0]
+------------------------------------------------------------------------
+Consistency check
+Formula  is inconclusive:
+    Constraint  is true:
+        Simple bound x_1 >= x_0 + 5 is false with valuation:
+            x_1: [1, 3]
+            x_0: [0, 0]
+            k: 5
+        Simple bound x_2 >= x_1 + -5 is true with valuation:
+            x_2: [-2, 0]
+            x_1: [1, 3]
+            k: -5
+    Constraint  is inconclusive:
+        Simple bound x_0 >= x_2 + 2 is inconclusive with valuation:
+            x_0: [0, 0]
+            x_2: [-2, 0]
+            k: 2
+        Simple bound x_1 >= x_2 + 4 is inconclusive with valuation:
+            x_1: [1, 3]
+            x_2: [-2, 0]
+            k: 4
+Deducing new valuations
+Couldn't narrow down any variables
+------------------------------------------------------------------------
+Decision step
+Splitting variable x_1 into [1, 2] and [3, 3]
+Opening decision level 3
+Changing valuation for x_1 from [1, 3] to [1, 2]
+------------------------------------------------------------------------
+Consistency check
+Formula  is inconclusive:
+    Constraint  is true:
+        Simple bound x_1 >= x_0 + 5 is false with valuation:
+            x_1: [1, 2]
+            x_0: [0, 0]
+            k: 5
+        Simple bound x_2 >= x_1 + -5 is true with valuation:
+            x_2: [-2, 0]
+            x_1: [1, 2]
+            k: -5
+    Constraint  is inconclusive:
+        Simple bound x_0 >= x_2 + 2 is inconclusive with valuation:
+            x_0: [0, 0]
+            x_2: [-2, 0]
+            k: 2
+        Simple bound x_1 >= x_2 + 4 is inconclusive with valuation:
+            x_1: [1, 2]
+            x_2: [-2, 0]
+            k: 4
+Deducing new valuations
+Couldn't narrow down any variables
+------------------------------------------------------------------------
+Decision step
+Splitting variable x_2 into [-2, -1] and [0, 0]
+Opening decision level 4
+Changing valuation for x_2 from [-2, 0] to [-2, -1]
+------------------------------------------------------------------------
+Consistency check
+Formula  is inconclusive:
+    Constraint  is true:
+        Simple bound x_1 >= x_0 + 5 is false with valuation:
+            x_1: [1, 2]
+            x_0: [0, 0]
+            k: 5
+        Simple bound x_2 >= x_1 + -5 is true with valuation:
+            x_2: [-2, -1]
+            x_1: [1, 2]
+            k: -5
+    Constraint  is inconclusive:
+        Simple bound x_0 >= x_2 + 2 is inconclusive with valuation:
+            x_0: [0, 0]
+            x_2: [-2, -1]
+            k: 2
+        Simple bound x_1 >= x_2 + 4 is inconclusive with valuation:
+            x_1: [1, 2]
+            x_2: [-2, -1]
+            k: 4
+Deducing new valuations
+Couldn't narrow down any variables
+------------------------------------------------------------------------
+Decision step
+Splitting variable x_1 into [1, 1] and [2, 2]
+Opening decision level 5
+Changing valuation for x_1 from [1, 2] to [1, 1]
+------------------------------------------------------------------------
+Consistency check
+Formula  is inconclusive:
+    Constraint  is true:
+        Simple bound x_1 >= x_0 + 5 is false with valuation:
+            x_1: [1, 1]
+            x_0: [0, 0]
+            k: 5
+        Simple bound x_2 >= x_1 + -5 is true with valuation:
+            x_2: [-2, -1]
+            x_1: [1, 1]
+            k: -5
+    Constraint  is inconclusive:
+        Simple bound x_0 >= x_2 + 2 is inconclusive with valuation:
+            x_0: [0, 0]
+            x_2: [-2, -1]
+            k: 2
+        Simple bound x_1 >= x_2 + 4 is false with valuation:
+            x_1: [1, 1]
+            x_2: [-2, -1]
+            k: 4
+Deducing new valuations
+    Constraint  is unit
+        Changing valuation for x_2 from [-2, -1] to [-2, -2]
+Successfully narrowed down a variable
+------------------------------------------------------------------------
+Consistency check
+Formula  is true:
+    Constraint  is true:
+        Simple bound x_1 >= x_0 + 5 is false with valuation:
+            x_1: [1, 1]
+            x_0: [0, 0]
+            k: 5
+        Simple bound x_2 >= x_1 + -5 is true with valuation:
+            x_2: [-2, -2]
+            x_1: [1, 1]
+            k: -5
+    Constraint  is true:
+        Simple bound x_0 >= x_2 + 2 is true with valuation:
+            x_0: [0, 0]
+            x_2: [-2, -2]
+            k: 2
+        Simple bound x_1 >= x_2 + 4 is false with valuation:
+            x_1: [1, 1]
+            x_2: [-2, -2]
+            k: 4
+------------------------------------------------------------------------
+Valuation:
+    x_0: [0, 0]
+    x_1: [1, 1]
+    x_2: [-2, -2]
+Completed in 12 steps.
+The formula is satisfiable.
