@@ -1,5 +1,12 @@
 \section{Conclusion}
 
-The backtrack algorithm was to be implemented, including a parser to read the input CSP. We did not have enough time to enhance the algorithm by impplementing lazy clause evaluation or decision heuristics, though. 
+We showed that interval satisfaction is a sufficient criterion to tell if a simple CSP is satisfiable.
+By displaying the search space as a tree structure, and mapping the algorithm's steps to movements in this tree, we showed that its sound and complete.
 
-The backtrack algorithm is sound and complete and the constraint solving with the given type of constraints is NP-complete, since simple CSP problems can be created from boolean SAT problems. When using real numbers instead of integers for the domains of the variables, the backtrack algorithm does not always terminate in finite time.
+Further, we were able to show that the given type of CSPs are NP-complete by reducing them to boolean SAT problems.
+
+We concluded that the algorithm~$\mathcal{A}$ works correctly on real-valued, infinite bounds, as long as it terminates, which is not guaranteed with these types of bounds.
+
+The algorithms~$\mathcal{A}$ and $\mathcal{B}$ were implemented and described, including a parser to read the input CSP. Due to time constraints, we were not able to enhance the algorithms by implementing lazy clause evaluation or decision heuristics, though.
+
+Due to lack of time, we weren't able to work on many of the optional tasks, but we tried to sketch some ideas on lazy clause evaluation and decision heuristics.
