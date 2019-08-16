@@ -21,10 +21,12 @@ To explain this, we will use a tree structure representing the search space and 
 Fig.~\ref{fig:search-tree} shows the search space as a tree.
 Each node represents an interval valuation, with $\rho^0$ being the initial interval valuation.
 Non-bend edges running from a top node to a bottom node represent a parent-child relationship, bent edges show a backtrack alternative.
-The children of a node are two interval valuations created from their parent as part of step 3 of algorithm $\mathcal{A}$.
-The variable at the edges is the variable whose interval was split.
-Dashed (\dashed) elements are known by the algorithm already, but not used, while dotted (\dotted) elements are not yet known at all, though they exist theoretically.
+Dashed (\dashed) elements are known by the algorithm already, but not used, while dotted (\dotted) elements are not yet known, though they exist theoretically.
 Red nodes ($\rho^{3,7,8}$) represent interval valuations under which at least one constraint is false, while green nodes ($\rho^{4,5,6}$) represent valuations which satisfy all constraints.
+White ones are either inconclusive or their truth value is unknown.
+
+The children of a node are two interval valuations created from their parent as part of step 3 of algorithm $\mathcal{A}$.
+The variables on the edges denote those whose interval was split.
 
 $\rho^3$ is the current interval valuation, $\rho^4$ and $\rho^2$ are currently on the backtrack-alternative stack, in that order.
 $\rho^3$ is also a dead-end in the search space, meaning that at least one constraint is false under it.
