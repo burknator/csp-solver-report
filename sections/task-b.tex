@@ -3,7 +3,7 @@
 \item Is algorithm $\mathcal{A}$ sound and complete, i.e. does $\mathcal{A}$ stop on each simple CSP with the correct result? Give reasons for your answer.
 \end{enumerate}
 
-Algorithm $\mathcal{P}$ is both sound and complete, because it traverses the search space in a complete manner and only returns correct results.
+Algorithm $\mathcal{A}$ is both sound and complete, because it traverses the search space in a complete manner and only returns correct results.
 To explain this, we will use a tree structure representing the search space and argue that the algorithm traverses this tree in a way that allows it to always stop with the correct result.
 
 \begin{figure}[H]
@@ -33,7 +33,7 @@ The bend edge from $\rho^3$ to $\rho^4$ shows that $\rho^4$ is the next availabl
 The algorithm dictates that $\rho^{i+1} \cup \rho^{i+2} = \rho^i$ and $\rho^{i+1} \cap \rho^{i+2} = \emptyset$, meaning that the two children of a parent are disjoint and together form the whole parent.
 Which is important, because otherwise parts of the variable intervals would be missing from, or occur more than once in the search space.
 
-\paragraph{Traversal}
+\paragraph{Mapping Steps to Tree-Traversal}
 The algorithm traverses the tree by asserting the interval valuations represented as nodes in the tree.
 Step 3 of the algorithm would first create two children of a node and then, by asserting one of those, travers the edge from the parent node to the child node which represents the asserted interval valuation.
 Backtracking as described in step 2 of the algorithm is a lateral traversal along a bent edge in the tree.
