@@ -44,27 +44,6 @@ This is converted to an instance of \texttt{Result} and returned by \texttt{CspS
 \paragraph{}
 Instead of having a single data structure to store the interval valuations of all variables (like the function $\rho$ from the task description indicates), a new instance of \texttt{Valuation} is created every time a new interval valuation is needed (simply ``valuations'' from now on).
 
-\todo[inline]{Groesser machen?}
-
-\begin{multicols}{2}
-
-\begin{figure}[H]
-  \includegraphics[width=.5\textwidth]{images/valuation-before}
-  \caption{UML object diagram \textbf{before} calling \texttt{lowerHalf.activate()} in line 145 of \texttt{CspSolver.java}.}
-  \label{fig:valuation-before}
-\end{figure}
-
-\columnbreak    
-
-\begin{figure}[H]
-  \includegraphics[width=.5\textwidth]{images/valuation-after}
-  \caption{UML object diagram \textbf{after} calling \texttt{lowerHalf.activate()} in line 145 of \texttt{CspSolver.java}.}
-  \label{fig:valuation-after}
-\end{figure}
-
-\end{multicols}
-
-
 \paragraph{}
 Valuations utilise Java's reference semantic to alter the lower and upper bounds of variables they are intended for.
 Just as simple bounds, valuations store only references to the actual variables.
@@ -76,6 +55,22 @@ The object diagrams seen in fig.~\ref{fig:valuation-before} and fig.~\ref{fig:va
 Because the algorithm doesn't use valuations more than once, they are only stored in the backtrack alternatives stack, if at all.
 When two new valuations are created during the decision step, the one not stored as a backtrack alternative is directly activated and then left to be collected by the JVM's garbage collector.
 During the backtrack step, the alternative is popped off of the \texttt{CspSolver.backtrackAlternatives}-stack, and then similarly activated and left to be collected.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.7\textwidth]{images/valuation-before}
+    \caption{UML object diagram \textbf{before} calling \texttt{lowerHalf.activate()} in line 145 of \texttt{CspSolver.java}.}
+    \label{fig:valuation-before}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=.7\textwidth]{images/valuation-after}
+    \caption{UML object diagram \textbf{after} calling \texttt{lowerHalf.activate()} in line 145 of \texttt{CspSolver.java}.}
+    \label{fig:valuation-after}
+\end{figure}
 
 
 \subsubsection{Implementation of Algorithm $\mathcal{B}$}
