@@ -81,7 +81,14 @@
 \listoftodos
 
 \begin{abstract}
-\todo[inline]{ABSTRACT}
+This report details our approach to solve the tasks given in~\cite{MF19}.
+It will show that interval satisfaction is sufficient to show that a simple CSP is satisfiable, as well as that simple CSPs are NP-complete.
+Algorithm~$\mathcal{A}$ is examined in detail.
+We show that it's sound and complete.
+Its usability on simple CSPs with infinite, real-valued bounds was examined.
+We conclude that the algorithm, as long as it terminates, still works correctly, but it may not always terminate.
+Both algorithms~$\mathcal{A}$ and $\mathcal{B}$ were implemented, and their implementation is briefly described.
+To be able to parse plain text files, we implemented a parser which is able to read in a formatted file and output an instance of a CSP formula to start the CSP solver with.
 \end{abstract}
 
 \tableofcontents
