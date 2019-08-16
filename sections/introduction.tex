@@ -1,22 +1,24 @@
 \section{Introduction}
 
-\todo[inline]{Maybe add some stuff to this}
-
 \emph{Constraint satisfaction problems} model problems in many areas in science and industry.
 A \emph{CSP} is modelled with a set of variables, each one having it's own domain, as well as constraints which describe the relationships between the variables.~\cite{MF19}
 
 The domains are not necessarily bounded or unbounded, finite or infinite.
-But in this task, only simplified CSPs are considered, they are bounded as well as finite.~\cite{MF19}
+But in this task, only simplified CSPs are considered, which are bounded as well as finite.~\cite{MF19}
+
 Because the task only considers simple CSPs, we use the terms ``CSP'' and ``simple CSP'' interchangeably.
 
-This report uses the same definitions as the task description.
+Also note that this report uses the same definitions as the task description.
 
-\subsection{Task Description}
+\subsection{Task Description \& Overview}
 
-The task was to write a tool which gets as input a single CSP in form of a plaintext file.
-After receiving the input, the program is supposed to find out of there exists a solution for the given CSP and if so state on possible solution.
+Six exercises are supposed to be solved, two of which are optional.
+In these exercises we were tasked to show why interval satisfaction shows CSP satisfaction, that algorithm~$\mathcal{A}$ is sound and complete, that the given type of simple CSPs are NP-complete and examine whether the algorithm can handle simple CSPs with infinite, real-valued bounds.
+Our solutions to those can be found in section~\ref{sec:exercise-solutions}.
 
-Two algorithms $\mathcal{A}$ and $\mathcal{B}$ were given in the task description, which are capable of determining if a CSP is satisfiable and give a solution if so.
+Additionally, we were tasked with writing a tool which gets as input a single CSP in form of a plaintext file.
+After receiving the input, the program is supposed to find out if the given CSP is satisfiable, and if so, provide a solution.
+Two algorithms $\mathcal{A}$ and $\mathcal{B}$, which are capable of performing the above task, were given as part of the task description.
+The section~\ref{ssec:algorithms} describes our implementation of these algorithms, section~\ref{ssec:parser-impl} describes the implementation of the parser.
 
-We won't reiterate on the algorithms directly here, since they can be found in the task description.
-However, we will briefly describe our implementation of these algorithms in section~\ref{ssec:algorithms}.
+Lastly, you will find our conclusion in section~\ref{sec:conclusion}.

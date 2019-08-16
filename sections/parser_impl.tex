@@ -1,5 +1,5 @@
 
-\subsection{Parser Implementation}
+\subsection{Parser Implementation}\label{ssec:parser-impl}
 
 The parser is mostly comprised of two states. After preparing the incoming String by removing all formatting symbols like \textbackslash n or \textbackslash t and skipping initial whitespace, the program expects the letters ``DECL''. Finding these prompts the parser to go into its first state of reading the declaration of variables. In each row it first expects the variable name, then its minimum value and lastly its maximum value. Between each entry there has to be at least one blank, while the name can be of varying length greater than or equal to one symbol. All variables are stored in a list.
 
