@@ -8,7 +8,7 @@
 \end{figure}
 
 
-\subsection{Algorithms $\mathcal{A}$ and $\mathcal{B}$}
+\subsection{Algorithms $\mathcal{A}$ and $\mathcal{B}$}\label{ssec:algorithms}
 
 \paragraph{}
 Fig.~\ref{fig:class-diagram} shows an UML class diagram of the implementation.
@@ -16,7 +16,8 @@ The class \texttt{Formula} models CSP formulae of the type $F = c_1 \wedge c_2 \
 It defines a member \texttt{java.util.ArrayList} over \texttt{Constraint}.
 The classes \texttt{Constraint} and \texttt{SimpleBound} model simple constraints and simple bounds, respectively, as defined in def.~2 from~\cite{MF19}.
 \texttt{Constraint}, too, defines a \texttt{java.util.ArrayList} member, except this one is over \texttt{SimpleBound}.
-The methods \texttt{isTrue()}, \texttt{isFalse()} and \texttt{isInconclusive()} of these classes can be used to compute the truth values of the respective instance.
+The methods \texttt{isTrue()}, \texttt{isFalse()} and\\
+\texttt{isInconclusive()} of these classes can be used to compute the truth values of the respective instance.
 The class \texttt{Variable} models a variable, with a lower and an upper bound; \texttt{Valuation} models an interval valuation of a single variable.
 Our implementation's use of valuations is described in section~\ref{ssec:valuations}.
 
@@ -29,13 +30,13 @@ Inside that method runs a very simple state machine, realised by an infinite loo
 Following the algorithm, the initial state is \texttt{State.CONSISTENCY\_CHECK}.
 Depending on the state, the corresponding method of \texttt{CspSolver} is called, where each method returns the next state.
 
-As one would expect, the method \texttt{CspSolver.consistencyCheck()} implements step 1, \texttt{.backtrack()} step 2 and \texttt{.decision()} step 3 of algorithms $\mathcal{A}$ and $\mathcal{B}$ (the latter after enabling the flag \texttt{CspSolver.enableDeductionStep}).
+As one would expect, the method \texttt{CspSolver.consistencyCheck()} implements step 1,\\ \texttt{.backtrack()} step 2 and \texttt{.decision()} step 3 of algorithms $\mathcal{A}$ and $\mathcal{B}$ (the latter after enabling the flag \texttt{CspSolver.enableDeductionStep}).
 
 \texttt{CspSolver.backtrack()} and \texttt{.decision()} use the \texttt{backtrackAlternatives} member of the same class to store the backtrack alternatives.
 It's an instance of the \texttt{java.util.Stack} class from the Java standard library.
 It offers everything our implementation needed, so we didn't see any reason to create our own stack implementation.
 
-When the algorithm reaches a result in either \texttt{CspSolver.consistencyCheck()} or \texttt{.backtrack()}, a special case of \texttt{State} is returned by these methods (not seen in figure~\ref{fig:class-diagram}).
+When the algorithm reaches a result in either \texttt{CspSolver.consistencyCheck()} or\\ \texttt{.backtrack()}, a special case of \texttt{State} is returned by these methods (not seen in figure~\ref{fig:class-diagram}).
 This is converted to an instance of \texttt{Result} and returned by \texttt{CspSolver.start()}, thus exiting the infinite loop.
 
 
